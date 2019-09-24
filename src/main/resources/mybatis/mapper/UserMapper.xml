@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wtu.dao.UserMapper">
+
+    <!-- 查询用户数据 -->
+    <select id="seleteUser" resultType="map">
+
+			select * from user
+		</select>
+<insert id="insertUser" parameterType="com.wtu.pojo.User">
+     insert into user(name,password) value (#{username},#{password})
+</insert>
+</mapper>
