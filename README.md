@@ -1,0 +1,6 @@
+# SSMDemo
+一个简单的ssm框架整合实现登陆注册功能
+本项目简单的整合了SSM框架，实现了登陆注册功能，
+controller调用service层，servive掉哦那个dao层，dao层直接通过xml和数据库做交互
+前端映射，通过配置实现，就可以多级目录访问了
+主要配置文件在resources中，
