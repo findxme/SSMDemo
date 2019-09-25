@@ -8,4 +8,5 @@ import java.util.Map;
 public interface ShopMapper {
     List<Map<String,Object>> seleteShop();
     void insertShop(User user);
+
 }

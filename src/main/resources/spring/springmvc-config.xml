@@ -15,8 +15,8 @@
     <!-- 2.配置注解驱动,用于识别注解(比如@Controller) -->
     <mvc:annotation-driven></mvc:annotation-driven>
 
-    <!-- 3.配置需要扫描的包: Spring自动去扫描base-package 下的类, 如果扫描到的类上有@Controller,@Service,@Component等注解
-        将会自动将类注册为bean -->
+            <!-- 3.配置需要扫描的包: Spring自动去扫描base-package 下的类, 如果扫描到的类上有@Controller,@Service,@Component等注解
+                将会自动将类注册为bean -->
     <context:component-scan base-package="com.wtu.controller">
     </context:component-scan>
 

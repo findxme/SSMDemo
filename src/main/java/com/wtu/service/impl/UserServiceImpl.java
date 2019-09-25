@@ -1,7 +1,8 @@
-package com.wtu.service;
+package com.wtu.service.impl;
 
 import com.wtu.dao.UserMapper;
 import com.wtu.pojo.User;
+import com.wtu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

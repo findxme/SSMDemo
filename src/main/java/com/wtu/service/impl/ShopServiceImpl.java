@@ -1,7 +1,8 @@
-package com.wtu.service;
+package com.wtu.service.impl;
 
 import com.wtu.dao.ShopMapper;
 import com.wtu.pojo.User;
+import com.wtu.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

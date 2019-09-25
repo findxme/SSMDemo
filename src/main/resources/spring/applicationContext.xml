@@ -17,8 +17,38 @@
         <property name="driverClassName" value="${db.driverClassName}"></property>
         <property name="url" value="${db.url}"></property>
         <property name="username" value="${db.username}"></property>
-        <property name="password" value="${db.password}"></property>
+         <property name="password" value="${db.password}"></property>
     </bean>
+
+<!--    &lt;!&ndash;事务管理器，对mybatis操作数据库事务控制，spring使用jdbc的事务控制类&ndash;&gt;-->
+<!--    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+<!--        &lt;!&ndash;数据源&ndash;&gt;-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+
+<!--    </bean>-->
+
+
+
+<!--    &lt;!&ndash;通知也叫传播行为  transaction-manager通知给事务管理器&ndash;&gt;-->
+<!--    <tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="save*" propagation="REQUIRED"/>-->
+<!--            <tx:method name="delete*" propagation="REQUIRED"/>-->
+<!--            <tx:method name="insert*" propagation="REQUIRED"/>-->
+<!--            <tx:method name="update*" propagation="REQUIRED"/>-->
+<!--            &lt;!&ndash;支持事务。码晕就算了，这个是只读&ndash;&gt;-->
+<!--            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>-->
+<!--            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>-->
+<!--            <tx:method name="select*" propagation="SUPPORTS" read-only="true"/>-->
+<!--        </tx:attributes>-->
+
+<!--    </tx:advice>-->
+<!--&lt;!&ndash;aop事务控制&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;切点，切om.wtu.下的service下的impl下的*（所有类的）*（所有方法）（..）不管什么参数  和下面的pointcut一一对应&ndash;&gt;-->
+<!--        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.wtu.service.impl.*.*(..))"/>-->
+<!--    </aop:config>-->
+
 
     <!-- 3.整合Spring和mybatis框架 将SqlSession等对象的创建交给Spring容器 id值(sqlSessionFactory)是固定值 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -30,11 +60,14 @@
         <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml" />
     </bean>
 
+
     <!-- 4. 定义mapper接口扫描器 配置所有mapper接口所在的包路径, 将来由Spring + myBatis框架来为接口 提供实现类,
         以及实现类的实例也有Spring框架来创建 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 扫描所有XxxMapper接口, 将接口实例的创建交给Spring容器 -->
         <property name="basePackage" value="com.wtu.dao" />
+        <!--猜测加上之后，可以通过XxxMappe.xml和XxxMapper.java自动匹配，要在同一个目录下-->
+<!--        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
     </bean>
 
     <!-- 5.配置需要扫描的包(server层): Spring自动去扫描base-package下的类 如果扫描到的类上有@Controller,@Service,@Component等注解,
